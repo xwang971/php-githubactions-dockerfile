@@ -10,7 +10,8 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends openssh-server \
     && docker-php-ext-install pdo_mysql \
-    && echo "$SSH_PASSWD" | chpasswd 
+    && echo "$SSH_PASSWD" | chpasswd \
+    && chmod +x /opt/init_container.sh
 
 COPY sshd_config /etc/ssh/
 
