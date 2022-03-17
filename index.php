@@ -11,7 +11,7 @@ class GitHubApi
 
     public function makeZenApiCall()
     {
-        // Initiate curl session in a variable (resource)
+        // Call the endpoint with file_get_contents and print output recursively 
         echo $this->URL;
         $res = file_get_contents($this->URL);
         $json = json_decode($res);
