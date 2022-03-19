@@ -17,8 +17,8 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t ansalemocontainerregistry.azurecr.io/ansalemo-php-wafc-githubactions:${{ github.sha }}
-        docker push ansalemocontainerregistry.azurecr.io/ansalemo-php-wafc-githubactions:${{ github.sha }}
+        docker build . -t ansalemocontainerregistry.azurecr.io/ansaleme-php-wafc-ghactions:${{ github.sha }}
+        docker push ansalemocontainerregistry.azurecr.io/ansaleme-php-wafc-ghactions:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -31,6 +31,7 @@ jobs:
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'ansalemo-php-wafc-githubactions'
+          app-name: 'ansaleme-php-wafc-ghactions'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_96A786AF29204F989FAA2469FCD8089C }}
-          images: 'ansalemocontainerregistry.azurecr.io/ansalemo-php-wafc-githubactions:${{ github.sha }}'
+          images: 'ansalemocontainerregistry.azurecr.io/ansaleme-php-wafc-ghactions:${{ github.sha }}'
+          slot: 'staging'
