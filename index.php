@@ -37,6 +37,7 @@ class GitHubApi
     {
         // Call the endpoint with file_get_contents and print output recursively 
         $res = file_get_contents($this->URL);
+        // Decode the json string
         $json = json_decode($res);
         $this->coinDeskStructuredResponse($json);
     }
