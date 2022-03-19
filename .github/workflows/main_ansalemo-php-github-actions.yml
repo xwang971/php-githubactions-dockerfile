@@ -28,6 +28,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Login for az cli commands 
+        uses: azure/login@v1
+        with:
+          # AZURE_CREDENTIALS is the json output of az ad sp create
+          # Which is ran to create the Service Principal prior to this 
+          # For more information see: https://github.com/Azure-Samples/dotnetcore-containerized-sqldb-ghactions#2-create-a-service-principal-to-manage-your-resource-group-from-github-actions
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
