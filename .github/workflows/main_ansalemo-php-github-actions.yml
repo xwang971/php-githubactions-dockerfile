@@ -34,4 +34,4 @@ jobs:
           app-name: 'ansaleme-php-wafc-ghactions'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_96A786AF29204F989FAA2469FCD8089C }}
           images: 'ansalemocontainerregistry.azurecr.io/ansaleme-php-wafc-ghactions:${{ github.sha }}'
-          slot: 'staging'
+          slot-name: staging
