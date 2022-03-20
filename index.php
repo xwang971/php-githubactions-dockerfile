@@ -31,7 +31,6 @@ class GitHubApi
         print_r("BPI - EUR - Rate: " . $json->bpi->EUR->rate . PHP_EOL);
         print_r("BPI - EUR - Description: " . $json->bpi->EUR->description . PHP_EOL);
         print_r("BPI - EUR - Rate Flat: " . $json->bpi->EUR->rate_float . PHP_EOL);
-        print_r("Slot: Staging");
     }
 
     public function makeCoindeskAPICall()
