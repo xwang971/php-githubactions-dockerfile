@@ -5,6 +5,10 @@ name: Linux Container PHP Workflow
 
 on: [push]
 
+env:
+  AZURE_RESOURCE_GROUP: ansalemo-rg
+  WEB_APP_NAME: ansaleme-php-wafc-ghactions
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,5 +50,5 @@ jobs:
 
       - name: Swap to production slot
         run: |
-          az webapp deployment slot swap --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.WEB_APP_NAME }} --slot staging --target-slot production
-          echo "Swap finished. WebApp accessible at https://$(az webapp show --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.WEB_APP_NAME }} --query hostNames[0] -o tsv)"
+          az webapp deployment slot swap --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --name ${{ env.WEB_APP_NAME }} --slot staging --target-slot production
+          echo "Swap finished. WebApp accessible at https://$(az webapp show --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --name ${{ env.WEB_APP_NAME }} --query hostNames[0] -o tsv)"
